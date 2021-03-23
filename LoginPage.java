@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class LoginPage extends IDandPasswords implements ActionListener {
 
-    JFrame frame = new JFrame("Login");
+    JFrame frame = new JFrame("Electricity Billing System");
     JLabel welcomeLabel = new JLabel("Login");
     JButton loginButton = new JButton("Login");
     JButton registerButton = new JButton("Register");
@@ -23,37 +23,37 @@ public class LoginPage extends IDandPasswords implements ActionListener {
 
         Color customColor = new Color(44,100,51);
 
-        frame.getContentPane().setForeground(Color.white);
+        frame.getContentPane().setBackground(Color.lightGray);
 
         logininfo = loginInfoOriginal;
 
-        welcomeLabel.setBounds(0, 0, 200, 35);
-        welcomeLabel.setFont(new Font(null, Font.BOLD, 25));
+        welcomeLabel.setBounds(320, 0, 200, 35);
+        welcomeLabel.setFont(new Font(null, Font.BOLD, 30));
         welcomeLabel.setForeground(customColor);
 
-        userIDLabel.setBounds(50, 100, 75, 25);
-        userPasswordLabel.setBounds(50, 150, 75, 25);
+        userIDLabel.setBounds(205, 100, 75, 25);
+        userPasswordLabel.setBounds(200, 150, 75, 25);
 
-        messageLabel.setBounds(125, 250, 250, 35);
-        messageLabel.setFont(new Font(null, Font.ITALIC, 25));
+        messageLabel.setBounds(300, 180, 250, 12);
+        messageLabel.setFont(new Font(null, Font.ITALIC, 12));
 
-        userIDField.setBounds(125, 100, 200, 25);
-        userPasswordField.setBounds(125, 150, 200, 25);
+        userIDField.setBounds(300, 100, 200, 25);
+        userPasswordField.setBounds(300, 150, 200, 25);
 
-        loginButton.setBounds(125, 200, 100, 25);
+        loginButton.setBounds(320, 200, 100, 25);
         loginButton.setFocusable(false);
         loginButton.addActionListener(this);
         loginButton.setBackground(Color.green);
 
-        registerButton.setBounds(125, 250, 100, 25);
+        registerButton.setBounds(320, 250, 100, 25);
         registerButton.setFocusable(false);
         registerButton.addActionListener(this);
 
-        resetButton.setBounds(125, 300, 100, 25);
+        resetButton.setBounds(320, 300, 100, 25);
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);
 
-        quitButton.setBounds(125, 350, 100, 25);
+        quitButton.setBounds(320, 350, 100, 25);
         quitButton.setFocusable(false);
         quitButton.addActionListener(this);
 
@@ -68,7 +68,10 @@ public class LoginPage extends IDandPasswords implements ActionListener {
         frame.add(resetButton);
         frame.add(quitButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 420);
+
+        frame.setPreferredSize(new Dimension(720, 550));
+        frame.setMinimumSize(new Dimension(720, 550));
+        frame.setMaximumSize(new Dimension(720, 550));
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -86,8 +89,6 @@ public class LoginPage extends IDandPasswords implements ActionListener {
 
                 if (logininfo.get(userID).equals(password)) {
 
-                    // messageLabel.setForeground(Color.green); NOT NEEDED
-                    // messageLabel.setText("Login Successful"); NOT NEEDED
                     frame.dispose();
                     WelcomePage welcomePage = new WelcomePage(userID);
 
@@ -96,7 +97,7 @@ public class LoginPage extends IDandPasswords implements ActionListener {
                 else {
 
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Wrong Password");
+                    messageLabel.setText("userID or Password Incorrect");
 
                 }
 
@@ -105,7 +106,7 @@ public class LoginPage extends IDandPasswords implements ActionListener {
             else {
 
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Username not found");
+                messageLabel.setText("userID or Password Incorrect");
 
             }
         }

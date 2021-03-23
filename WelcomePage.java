@@ -8,8 +8,8 @@ import javax.swing.text.View;
 
 public class WelcomePage extends IDandPasswords implements ActionListener {
 
-    JFrame frame = new JFrame("Menu");
-    JLabel welcomeLabel = new JLabel();
+    JFrame frame = new JFrame("Electricity Billing System");
+    JLabel welcomeLabel = new JLabel("Main Menu");
     JButton viewTarrifButton = new JButton("View Tariffs");
     JButton viewBillsButton = new JButton("View Bills");
     JButton calculateBillButton = new JButton("Calculate Bill");
@@ -27,50 +27,50 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
 
         Color customColor = new Color(44,100,51);
 
-        frame.getContentPane().setForeground(Color.white);
+        frame.getContentPane().setBackground(Color.lightGray);
 
         String UserID = userID;
-        welcomeLabel.setBounds(0, 0, 200, 35);
-        welcomeLabel.setFont(new Font(null, Font.BOLD, 25));
+        welcomeLabel.setBounds(250, 0, 250, 35);
+        welcomeLabel.setFont(new Font(null, Font.BOLD, 30));
         welcomeLabel.setText("Welcome, " + userID);
         welcomeLabel.setForeground(customColor);
 
-        viewTarrifButton.setBounds(280, 50, 200, 25);
+        viewTarrifButton.setBounds(260, 50, 200, 25);
         viewTarrifButton.setFocusable(false);
         viewTarrifButton.addActionListener(this);
 
-        viewBillsButton.setBounds(280, 100, 200, 25);
+        viewBillsButton.setBounds(260, 100, 200, 25);
         viewBillsButton.setFocusable(false);
         viewBillsButton.addActionListener(this);
 
-        billsListLabel.setBounds(280, 150, 200, 25);
+        billsListLabel.setBounds(250, 150, 200, 25);
         billsListLabel.setFocusable(false);
 
-        unitsConsumedLabel.setBounds(280, 200, 250, 25);
+        unitsConsumedLabel.setBounds(250, 175, 250, 25);
         unitsConsumedLabel.setFocusable(false);
 
-        unitsConsumedField.setBounds(280, 250, 200, 25);
+        unitsConsumedField.setBounds(260, 200, 200, 25);
         unitsConsumedField.addActionListener(this);
 
-        consumptionSelectionLabel.setBounds(280, 300, 200, 25);
+        consumptionSelectionLabel.setBounds(260, 220, 200, 25);
         consumptionSelectionLabel.setFocusable(false);
 
-        choicesDropdown.setBounds(250, 350, 350, 25);
+        choicesDropdown.setBounds(260, 250, 220, 25);
         choicesDropdown.setFocusable(false);
         choicesDropdown.addActionListener(this);
 
-        calculateBillButton.setBounds(280, 400, 200, 25);
+        calculateBillButton.setBounds(260, 280, 200, 25);
         calculateBillButton.setFocusable(false);
         calculateBillButton.addActionListener(this);
 
-        amountDueLabel.setBounds(280, 450, 200, 25);
+        amountDueLabel.setBounds(280, 310, 200, 25);
         amountDueLabel.setFocusable(false);
 
-        resetButton.setBounds(280, 500, 200, 25);
+        resetButton.setBounds(260, 360, 200, 25);
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);
 
-        quitButton.setBounds(280, 550, 200, 25);
+        quitButton.setBounds(260, 400, 200, 25);
         quitButton.setFocusable(false);
         quitButton.addActionListener(this);
 
@@ -87,7 +87,9 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         frame.add(resetButton);
         frame.add(quitButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(720, 720);
+        frame.setPreferredSize(new Dimension(720, 550));
+        frame.setMinimumSize(new Dimension(720, 550));
+        frame.setMaximumSize(new Dimension(720, 550));
         frame.setLayout(null);
         frame.setVisible(true);
 

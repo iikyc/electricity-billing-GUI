@@ -14,7 +14,7 @@ public class TariffsPage implements ActionListener {
 
     TariffsPage() {
 
-        frame.getContentPane().setForeground(Color.white);
+        frame.getContentPane().setBackground(Color.lightGray);
 
         quitButton.setBounds(0, 0, 100, 100);
         quitButton.setFocusable(false);
@@ -37,7 +37,9 @@ public class TariffsPage implements ActionListener {
         frame.add(new JLabel("6001 and Above: 38 fils/kWh"));
         frame.add(quitButton);
         frame.add(closeButton);
-        frame.setSize(420, 420);
+        frame.setPreferredSize(new Dimension(720, 550));
+        frame.setMinimumSize(new Dimension(720, 550));
+        frame.setMaximumSize(new Dimension(720, 550));
         frame.pack();
         frame.setVisible(true);
 
@@ -61,4 +63,3 @@ public class TariffsPage implements ActionListener {
 
     }
 }
-
