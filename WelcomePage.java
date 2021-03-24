@@ -8,28 +8,35 @@ import javax.swing.text.View;
 
 public class WelcomePage extends IDandPasswords implements ActionListener {
 
+    // Frame
     JFrame frame = new JFrame("Electricity Billing System");
+    // Labels
     JLabel welcomeLabel = new JLabel("Main Menu");
+    JLabel consumptionSelectionLabel = new JLabel("Select the type of consumption");
+    JLabel unitsConsumedLabel = new JLabel("Enter the units consumed, kWh/month");
+    JLabel amountDueLabel = new JLabel("");
+    JLabel billsListLabel = new JLabel("");
+    // Buttons
     JButton viewTarrifButton = new JButton("View Tariffs");
     JButton viewBillsButton = new JButton("View Bills");
     JButton calculateBillButton = new JButton("Calculate Bill");
     JButton resetButton = new JButton("Reset");
     JButton quitButton = new JButton("Quit");
-    JLabel consumptionSelectionLabel = new JLabel("Select the type of consumption");
-    JLabel unitsConsumedLabel = new JLabel("Enter the units consumed, kWh/month");
-    JLabel amountDueLabel = new JLabel("");
-    JLabel billsListLabel = new JLabel("");
+    // Fields
     JTextField unitsConsumedField = new JTextField();
+    // Choices to be displayed in the JComboBox choicesDropdown
     String[] choices = { "Residential/Commercial","Industrial"};
+    // JComboBox (drop down menu) with choices passed in to be displayed
     final JComboBox<String> choicesDropdown = new JComboBox<>(choices);
 
     WelcomePage(String userID) {
 
-        Color customColor = new Color(44,100,51);
-
+        Color customColor = new Color(44,100,51); // Custom color used to style welcomeLabel
+        // Setting the background color for the frame
         frame.getContentPane().setBackground(Color.lightGray);
 
         String UserID = userID;
+        // Setting location and dimensions of components
         welcomeLabel.setBounds(250, 0, 250, 35);
         welcomeLabel.setFont(new Font(null, Font.BOLD, 30));
         welcomeLabel.setText("Welcome, " + userID);
@@ -74,6 +81,7 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         quitButton.setFocusable(false);
         quitButton.addActionListener(this);
 
+        // Adding components to the frame
         frame.add(welcomeLabel);
         frame.add(viewTarrifButton);
         frame.add(viewBillsButton);
@@ -86,10 +94,13 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         frame.add(amountDueLabel);
         frame.add(resetButton);
         frame.add(quitButton);
+        // Exiting the program when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Setting frame size (constricted to 720x550 in order to not need a layout to keep the project simple)
         frame.setPreferredSize(new Dimension(720, 550));
         frame.setMinimumSize(new Dimension(720, 550));
         frame.setMaximumSize(new Dimension(720, 550));
+        // Frame does not use any layout, all components' x,y location was hard coded
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -97,28 +108,28 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // View tariff button event handling
         if (e.getSource()==viewTarrifButton) {
-
+            // User is redirected to the tariffs page
             TariffsPage tariffsPage = new TariffsPage();
 
         }
-
+        // View bills button event handling
         if (e.getSource()==viewBillsButton) {
-
+            // Displaying past bills (the value of the userID key (billsList) in billsHashMap)
             billsListLabel.setText(String.valueOf(billsHashMap.get(userID)).replace("[", "").replace("]", ""));
 
         }
-
+        // Calculate bill button event handling
         if (e.getSource()==calculateBillButton) {
 
             String consumeType = (String)choicesDropdown.getSelectedItem();
             Double unitsConsumed = Double.parseDouble(unitsConsumedField.getText());
             Double amountDue;
 
-            // Start bill calc
+            // Start bill calculation
 
-            if (consumeType.equals("Residential/Commercial")) { // COMMENT
+            if (consumeType.equals("Residential/Commercial")) { // Calculation according to residential/commercial tariffs
 
 
                 if (unitsConsumed >= 0 && unitsConsumed <= 2000) {
@@ -146,9 +157,9 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
                 billsHashMap.put(userID, billsList); // Adding the bills list to the corresponding hashmap
                 amountDueLabel.setText("Amount due: " + String.valueOf(amountDue) + "AED");
 
-            } // End if for consumeType
+            } // End of if statement
 
-            else if (consumeType.equals("Industrial")) { // Comment
+            else if (consumeType.equals("Industrial")) { // Calculation according to industrial tariffs
 
 
                 if (unitsConsumed >= 0 && unitsConsumed <= 10000) {
@@ -162,23 +173,26 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
 
                 billsList.add(amountDue); // Adding the amount due to the bills list
                 billsHashMap.put(userID, billsList); // Adding the bills list to the corresponding hashmap
+                // Displaying the amount due by setting the text in amountDueLabel to amountDue
                 amountDueLabel.setText("Amount due: " + String.valueOf(amountDue) + "AED");
 
-            }
+            } // End of else if statement
 
-            // End bill calc
+            // End bill calculation
 
         }
-
+        // Reset button event handling
         if (e.getSource()==resetButton) {
-
+            // Any text in the unitsConsumedField is deleted by setting the text to null ("")
             unitsConsumedField.setText("");
+            // Resetting the default displayed item in choicesDropdown
             choicesDropdown.setSelectedItem("Residential/Commercial");
+            // Any text in the amountDueLabel is deleted by setting the text to null ("")
             amountDueLabel.setText("");
         }
-
+        // Quit button event handling
         if (e.getSource()==quitButton) {
-
+            // Exiting the program
             System.exit(0);
 
         }

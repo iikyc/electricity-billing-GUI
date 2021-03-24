@@ -8,23 +8,29 @@ import javax.swing.*;
 
 public class RegisterPage extends IDandPasswords implements ActionListener {
 
+    // Frame
     JFrame frame = new JFrame("Electricity Billing System");
+    // Labels
     JLabel welcomeLabel = new JLabel("Registration Page");
-    JButton registerButton = new JButton("Register");
-    JButton resetButton = new JButton("Reset");
-    JButton quitButton = new JButton("Quit");
-    JTextField userIDField = new JTextField();
-    JPasswordField userPasswordField = new JPasswordField();
     JLabel userIDLabel = new JLabel("userID: ");
     JLabel userPasswordLabel = new JLabel("Password: ");
     JLabel messageLabel = new JLabel("");
+    // Buttons
+    JButton registerButton = new JButton("Register");
+    JButton resetButton = new JButton("Reset");
+    JButton quitButton = new JButton("Quit");
+    // Fields
+    JTextField userIDField = new JTextField();
+    JPasswordField userPasswordField = new JPasswordField();
+    
 
     RegisterPage(ArrayList registeredUsers, HashMap billsHashMap, ArrayList billsList) {
 
-        Color customColor = new Color(44,100,51);
-
+        Color customColor = new Color(44,100,51); // Custom color used to style welcomeLabel
+        // Setting the background color for the frame
         frame.getContentPane().setBackground(Color.lightGray);
 
+        // Setting location and dimensions of components
         welcomeLabel.setBounds(230, 0, 300, 35);
         welcomeLabel.setFont(new Font(null, Font.BOLD, 30));
         welcomeLabel.setForeground(customColor);
@@ -34,6 +40,10 @@ public class RegisterPage extends IDandPasswords implements ActionListener {
 
         userIDField.setBounds(300, 100, 200, 25);
         userPasswordField.setBounds(300, 150, 200, 25);
+
+        messageLabel.setBounds(305, 180, 250, 12);
+        messageLabel.setFont(new Font(null, Font.ITALIC, 14));
+        messageLabel.setForeground(Color.red);
 
         registerButton.setBounds(320, 200, 100, 25);
         registerButton.setFocusable(false);
@@ -46,24 +56,24 @@ public class RegisterPage extends IDandPasswords implements ActionListener {
         quitButton.setBounds(320, 300, 100, 25);
         quitButton.setFocusable(false);
         quitButton.addActionListener(this);
-
-        messageLabel.setBounds(305, 180, 250, 12);
-        messageLabel.setFont(new Font(null, Font.ITALIC, 14));
-        messageLabel.setForeground(Color.red);
-
+        
+        // Adding components to the frame
         frame.add(welcomeLabel);
         frame.add(userIDLabel);
         frame.add(userPasswordLabel);
         frame.add(userIDField);
         frame.add(userPasswordField);
+        frame.add(messageLabel);
         frame.add(registerButton);
         frame.add(resetButton);
         frame.add(quitButton);
-        frame.add(messageLabel);
+        // Exiting the program when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Setting frame size (constricted to 720x550 in order to not need a layout to keep the project simple)
         frame.setPreferredSize(new Dimension(720, 550));
         frame.setMinimumSize(new Dimension(720, 550));
         frame.setMaximumSize(new Dimension(720, 550));
+        // Frame does not use any layout, all components' x,y location was hard coded
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -71,9 +81,10 @@ public class RegisterPage extends IDandPasswords implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // Register button event handling
         if (e.getSource()==registerButton) {
-
+            // Comparing the text in userIDField to the HashMap logininfo,
+            // if the text in userIDField is a key, an error message is displayed
             if (logininfo.containsKey(userIDField.getText())) {
 
                 messageLabel.setText("User already exists!");
@@ -81,24 +92,29 @@ public class RegisterPage extends IDandPasswords implements ActionListener {
             }
 
             else {
-
+                // Current frame is disposed
                 frame.dispose();
+                // If the text in userIDField is not a key in logininfo (the user does
+                // not exist), it is added as a registered user in the registeredUsers
+                // array list, and as a key in logininfo along with the password
                 registeredUsers.add(userIDField.getText());
                 logininfo.put(userIDField.getText(), String.valueOf(userPasswordField.getPassword()));
+                // User is redirected to the login page
                 LoginPage loginPage = new LoginPage(logininfo, registeredUsers, billsHashMap, billsList);
 
             }
         }
-
+        // Reset button event handling
         if (e.getSource()==resetButton) {
-
+            // Any text in the userIDField is deleted by setting the text to null ("")
             userIDField.setText("");
+            // Any text in the userPasswordField is deleted by setting the text to null ("")
             userPasswordField.setText("");
 
         }
-
+        // Quit button event handling
         if (e.getSource()==quitButton) {
-
+            // Exiting the program
             System.exit(0);
 
         }
