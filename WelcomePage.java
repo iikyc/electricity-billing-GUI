@@ -117,8 +117,7 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         // View bills button event handling
         if (e.getSource()==viewBillsButton) {
             // Displaying past bills (the value of the userID key (billsList) in billsHashMap)
-            billsListLabel.setText(String.valueOf(billsHashMap.get(userID)).replace("[", "").replace("]", ""));
-
+            BillsPage billsPage = new BillsPage(userID);
         }
         // Calculate bill button event handling
         if (e.getSource()==calculateBillButton) {
@@ -153,9 +152,11 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
 
                 }
 
-                billsList.add(amountDue); // Adding the amount due to the bills list
+                double finalAmountDue = (double) Math.round(amountDue * 100.0/100.0);
+
+                billsList.add(finalAmountDue); // Adding the amount due to the bills list
                 billsHashMap.put(userID, billsList); // Adding the bills list to the corresponding hashmap
-                amountDueLabel.setText("Amount due: " + String.valueOf(amountDue) + "AED");
+                amountDueLabel.setText("Amount due: " + String.valueOf(finalAmountDue) + "AED");
 
             } // End of if statement
 
@@ -171,10 +172,11 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
 
                 }
 
-                billsList.add(amountDue); // Adding the amount due to the bills list
+                double finalAmountDue = (double) Math.round(amountDue * 100.0/100.0);
+
+                billsList.add(finalAmountDue); // Adding the amount due to the bills list
                 billsHashMap.put(userID, billsList); // Adding the bills list to the corresponding hashmap
-                // Displaying the amount due by setting the text in amountDueLabel to amountDue
-                amountDueLabel.setText("Amount due: " + String.valueOf(amountDue) + "AED");
+                amountDueLabel.setText("Amount due: " + String.valueOf(finalAmountDue) + "AED");
 
             } // End of else if statement
 
