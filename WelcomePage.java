@@ -53,7 +53,7 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         billsListLabel.setBounds(250, 150, 200, 25);
         billsListLabel.setFocusable(false);
 
-        unitsConsumedLabel.setBounds(250, 175, 250, 25);
+        unitsConsumedLabel.setBounds(240, 175, 250, 25);
         unitsConsumedLabel.setFocusable(false);
 
         unitsConsumedField.setBounds(260, 200, 200, 25);
@@ -62,7 +62,7 @@ public class WelcomePage extends IDandPasswords implements ActionListener {
         consumptionSelectionLabel.setBounds(260, 220, 200, 25);
         consumptionSelectionLabel.setFocusable(false);
 
-        choicesDropdown.setBounds(260, 250, 220, 25);
+        choicesDropdown.setBounds(250, 250, 220, 25);
         choicesDropdown.setFocusable(false);
         choicesDropdown.addActionListener(this);
 
