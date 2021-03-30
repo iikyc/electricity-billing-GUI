@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 
-public class IDandPasswords {
+public class BackEnd {
 
     // Needed for login and registration
     public static HashMap<String, String> logininfo = new HashMap<>();
@@ -12,7 +12,7 @@ public class IDandPasswords {
 
     public static String userID;
 
-    IDandPasswords() {
+    BackEnd() {
 
         logininfo.put("kyc", "KYC");
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.*;
 
-public class LoginPage extends IDandPasswords implements ActionListener {
+public class LoginPage extends BackEnd implements ActionListener {
 
     // Frame
     JFrame frame = new JFrame("Electricity Billing System");
@@ -61,6 +61,9 @@ public class LoginPage extends IDandPasswords implements ActionListener {
         quitButton.setBounds(320, 350, 100, 25);
         quitButton.setFocusable(false);
         quitButton.addActionListener(this);
+
+        // Exiting the program when the frame is closed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Adding components to the frame
         frame.add(welcomeLabel);
         frame.add(userIDLabel);
@@ -72,8 +75,6 @@ public class LoginPage extends IDandPasswords implements ActionListener {
         frame.add(registerButton);
         frame.add(resetButton);
         frame.add(quitButton);
-        // Exiting the program when the frame is closed
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Setting frame size (constricted to 720x550 in order to not need a layout to keep the project simple)
         frame.setPreferredSize(new Dimension(720, 550));
         frame.setMinimumSize(new Dimension(720, 550));

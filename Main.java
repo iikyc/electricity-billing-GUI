@@ -2,10 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        IDandPasswords idandPasswords = new IDandPasswords();
+        BackEnd backEnd = new BackEnd();
 
-        LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo(), idandPasswords.getRegisteredUsers(), idandPasswords.getBillsHashMap(), idandPasswords.getBillsList());
+        LoginPage loginPage = new LoginPage(backEnd.getLoginInfo(), backEnd.getRegisteredUsers(), backEnd.getBillsHashMap(), backEnd.getBillsList());
 
     }
 }
-

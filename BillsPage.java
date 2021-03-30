@@ -5,7 +5,7 @@ import java.util.Collections;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class BillsPage extends IDandPasswords implements ActionListener {
+public class BillsPage extends BackEnd implements ActionListener {
 
     JFrame frame = new JFrame();
     // Panels
