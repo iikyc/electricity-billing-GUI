@@ -31,6 +31,7 @@ public class BillsPage extends BackEnd implements ActionListener {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
+        frame.setLocation(350, 100);
         frame.setLayout(new BorderLayout(10,10));
         frame.setVisible(true);
 

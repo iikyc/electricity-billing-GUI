@@ -55,6 +55,7 @@ public class TariffsPage implements ActionListener {
         frame.setPreferredSize(new Dimension(720, 550));
         frame.setMinimumSize(new Dimension(720, 550));
         frame.setMaximumSize(new Dimension(720, 550));
+        frame.setLocation(350, 100);
         // Exiting the program when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Adding components to the center panel

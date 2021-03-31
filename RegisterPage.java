@@ -73,6 +73,7 @@ public class RegisterPage extends BackEnd implements ActionListener {
         frame.setPreferredSize(new Dimension(720, 550));
         frame.setMinimumSize(new Dimension(720, 550));
         frame.setMaximumSize(new Dimension(720, 550));
+        frame.setLocation(350, 100);
         // Frame does not use any layout, all components' x,y location was hard coded
         frame.setLayout(null);
         frame.setVisible(true);
